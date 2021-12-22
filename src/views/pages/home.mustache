@@ -1,0 +1,26 @@
+{{>partials/header}}
+<div class="top-line"></div>
+<div class="container title">  
+  {{#banner}}
+    <h1>{{title}}</h1>
+  {{/banner}}
+</div>
+<div class="container list">
+  {{#list}}
+      <div class="item">
+        <div class="image-area">
+          <img src="images/{{image}}" class="item--image" />
+        </div>
+        <div class="info-area">  
+          <div class="item--id">id: #{{id}}</div>
+          <div class="item--brand">Brand: {{brand}}</div>
+          <div class="item--size">Size: {{size}}</div>
+          <form method="GET" action="/newrent"> 
+            <input type="submit" class="btn-rent" value="Rent"/>
+          </form>
+        </div>
+      </div>
+  {{/list}}
+</div>
+
+{{>partials/footer}}
