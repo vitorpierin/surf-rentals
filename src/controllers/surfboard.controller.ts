@@ -7,7 +7,7 @@ export const surfboards = async (req: Request, res: Response) => {
 }
 
 export const surfboard = async (req: Request, res: Response) => {
-  let id: string = req.params.id;
+  let id: string = req.params.id as string;
    
   let surfboard = await Surfboard.findByPk(id);
 
@@ -17,3 +17,17 @@ export const surfboard = async (req: Request, res: Response) => {
       res.json({error: 'Dados não encontrados'})
      }
 }
+
+/*export const update = async (req: Request, res: Response) =>{
+  let id: string = req.params.id as string;
+   
+  let surfboard = await Surfboard.findByPk(id);
+  
+  if(surfboard){
+     surfboard.available = false;
+     await surfboard.save();
+  }else{
+    res.json({error: 'Item não encontrado!'});
+  }
+  res.redirect('/');
+}*/

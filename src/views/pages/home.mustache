@@ -15,8 +15,9 @@
           <div class="item--id">id: #{{id}}</div>
           <div class="item--brand">Brand: {{brand}}</div>
           <div class="item--size">Size: {{size}}</div>
-          <form method="GET" action="/newrent"> 
-            <input type="submit" class="btn-rent" value="Rent"/>
+          <form method="GET" action="/newrent/{{id}}"> 
+            {{#available}}<input type="submit" class="btn-rent" value="Rent"/> {{/available}}
+            {{^available}}<input type="submit" class="btn-rent" value="Rent" disabled/> {{/available}}
           </form>
         </div>
       </div>

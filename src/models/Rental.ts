@@ -10,8 +10,7 @@ export interface RentalInstance extends Model {
   date_start: string;
   date_end: string;
   total_price: number;
-  info: string;
-  paied: boolean;
+  paid: boolean;
   document: string;
 }
 
@@ -43,10 +42,7 @@ export const Rental = sequelize.define<RentalInstance>('Rental', {
   total_price: {
     type: DataTypes.INTEGER
   },
-  info: {
-    type: DataTypes.STRING
-  },
-  paied: {
+  paid: {
     type: DataTypes.BOOLEAN
   },
   document: {

@@ -3,21 +3,31 @@ import { Rental } from '../models/Rental';
 import { Surfboard } from '../models/Surfboard';
 
 export const home = async (req: Request, res: Response) => {
-    let list = await Surfboard.findAll();
+    let available: string = req.query.available as string;
+    let list = await Surfboard.findAll({
+        order: [
+            ['available', 'DESC']
+         ]
+    });
 
+    
     res.render('pages/home', {
         banner:{
             title:"Surfboards Available:"
         },
-        list
+        list, 
+        available
     });
 }
 
-
-
 export const all = async (req: Request, res: Response) => {
-   const list = await Rental.findAll();
-   res.json({list});
+    let paid: string = req.query.paid as string;
+    const rentals = await Rental.findAll();
+    res.render('pages/dashboard',{ 
+        rentals,
+        paid
+})
+   //res.json({list});
 }
 export const one = async (req: Request, res: Response) => {
     let id: string = req.params.id;
@@ -31,7 +41,11 @@ export const one = async (req: Request, res: Response) => {
        }
  }
 export const add = async (req: Request, res: Response) => {
-   if(req.body.name){
+    
+    let id: string = req.query.id as string;
+    let surfboard = await Surfboard.findByPk(id);
+   
+    if(req.body.name){
     let newRental = await Rental.create({
         name: req.body.name,
         address: req.body.address,
@@ -43,10 +57,17 @@ export const add = async (req: Request, res: Response) => {
         document: req.body.document
 
     });
-    res.status(201).json({item: newRental});
+    if(surfboard){
+        surfboard.available = false;
+        await surfboard.save();
+     }else{
+       res.json({error: 'Item não encontrado!'});
+     }
+    //res.status(201).json({item: newRental});
    }else{
     res.json({error: 'Dados não enviados!'})
    }
+   res.redirect('/');
 }
 export const update = async (req: Request, res: Response) => {
    let id: string = req.params.id;
@@ -72,9 +93,6 @@ export const update = async (req: Request, res: Response) => {
         if(req.body.total_price){
             rent.total_price = req.body.total_price;
         }
-        if(req.body.info){
-            rent.info = req.body.info;
-        }
         if(req.body.document){
             rent.document = req.body.document;
         }
@@ -90,15 +108,15 @@ export const update = async (req: Request, res: Response) => {
                     break;
            }
         }
-        if(req.body.paied){
-            switch(req.body.paied.toLowerCase()){
+        if(req.body.paid){
+            switch(req.body.paid.toLowerCase()){
                 case 'true':
                 case '1':
-                    rent.paied = true;
+                    rent.paid = true;
                     break;
                 case 'false':
                 case '0':
-                    rent.paied = false;
+                    rent.paid = false;
                     break;
            }
         }
@@ -121,8 +139,18 @@ export const remove = async (req: Request, res: Response) => {
 }
 
 export const newrent = async (req: Request, res: Response) => {
+    let id: string = req.params.id as string;
+    
+    let surfboards = await Surfboard.findByPk(id);
 
-    if(req.params.available){
-        res.render('pages/newrent');
-    }  
+    res.render('pages/newrent', {
+        banner:{
+            title:"New Rent"
+        },
+        surfboards
+       
+    });
+  
+   
+    
 }

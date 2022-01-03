@@ -1,0 +1,31 @@
+{{>partials/header}}
+<div class="container">
+  <h1>Dashboard</h1>
+  <table class="table table-hover">
+    <tr>
+      <th class="col">Rental ID</th>
+      <th class="col">Name</th>
+      <th class="col">Address</th>
+      <th class="col">Document</th>
+      <th class="col">Date Start</th>
+      <th class="col">Date End</th>
+      <th class="col">Total $</th>
+      <th class="col">Paid</th>
+      <th class="col">Equipment Id</th>
+    </tr>
+    {{#rentals}}
+      <tr>
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>{{address}}</td>
+        <td>{{document}}</td>
+        <td>{{date_start}}</td>
+        <td>{{date_end}}</td>
+        <td>{{total_price}}</td>
+        {{#paid}}<td>Paid</td>{{/paid}}
+        {{^paid}}<td>Not Paid</td>{{/paid}}
+        <td>{{equipment_id}}</td>
+      </tr>
+    {{/rentals}}
+  </table>
+</div>

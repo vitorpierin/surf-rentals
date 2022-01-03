@@ -6,6 +6,7 @@ export interface SurfboardInstance extends Model {
   brand: string;
   size: string;
   available: boolean;
+  info: string;
   image: string;
 }
 
@@ -23,6 +24,9 @@ export const Surfboard = sequelize.define<SurfboardInstance>('Rental', {
   },
   available: {
     type: DataTypes.BOOLEAN
+  },
+  info: {
+    type: DataTypes.STRING
   },
   image: {
     type: DataTypes.STRING

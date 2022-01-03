@@ -1,3 +1,4 @@
+/* HOME PAGE */
 header{
   display: flex;
   
@@ -28,7 +29,7 @@ nav{
 .bar{
   width: 20px;
   height: 2px;
-  background-color: #ce840c;
+  background-color: rgb(255, 102, 0);
   margin-top: 5px;
   box-shadow: 1px 1px 2px #c3c3c3;
 }
@@ -41,7 +42,7 @@ nav{
   justify-content: center;
   cursor: pointer;
   font-weight: 600;
-  color: #ce840c;
+  color: rgb(255, 102, 0);
   text-shadow: 1px 1px 2px #c3c3c3;
   letter-spacing: 2px;
 }
@@ -79,6 +80,7 @@ h1{
   height: 200px;
   border-radius: 5px;
 }
+
 .info-area{
   min-width: 180px;
   display: flex;
@@ -99,3 +101,132 @@ h1{
   font-weight: 600;
   color: #fff;
 }
+/* Rent Page */
+.rent-area{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background:linear-gradient(10deg, rgba(2,0,36,1) 0%, rgba(0,0,0,0.9528186274509804) 0%, rgba(0,212,255,1) 100%);
+  border-radius: 30px;
+  color: #f1f1f1;
+  padding: 30px 50px;
+  margin-top: 20px;
+}
+.form-input{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  color: #f1f1f1;
+  font-weight: bold;
+  
+}
+.form-title{
+  font-size: 26px;
+  letter-spacing: 3px;
+  text-shadow: 1px 1px 1px #262626;
+  font-weight: bold;
+}
+.input-area{
+  width: 600px;
+  border-radius: 30px;
+  border: none;
+  padding:5px 15px;
+  font-size: 12px;
+  outline: none;
+  box-shadow: 0px 0px 3px #888;
+}
+.name{
+  width: 400px;
+}
+.date{
+  width: 200px;
+}
+.date-area{
+  display: flex;
+}
+.date-input{
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+}
+.info{
+  padding:5px 15px;
+  height: 160px;
+}
+.btn-submit{
+  width: 160px;
+  height: 35px;
+  margin-left: 50px;
+  align-self: center;
+  margin-top: 30px;
+  background-color: transparent;
+  color: #f1f1f1;
+  font-weight: bold;
+  border-radius: 20px;
+  background-color: rgba(0,212,255,0.2);
+}
+.btn-submit:hover{
+ box-shadow: 0px 0px 5px #c3c3c3;
+}
+.rent-label{
+  margin-top: 15px;
+  margin-bottom: 2px;
+  letter-spacing: 2px;
+  font-weight: 600;
+  text-shadow: 0px 0px 3px #262626;
+}
+.rent-label:last-child{
+  margin-bottom: 50px;
+}
+.document[type=file]::file-selector-button {
+  border:none;
+  border-radius: 20px;
+  border: none;
+  color: #fff;
+  padding: 3px 10px;
+  font-size: 12px;
+  background-color: #999999;
+}
+.document[type=file]::file-selector-button:hover {
+  box-shadow: 0px 0px 2px #c3c3c3;
+}
+
+
+.equipment-area{
+  margin-top: -100px;
+  margin-left: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  color: #f1f1f1;
+}
+.equipment-img{
+  width: 150px;
+  height: 220px;
+  border-radius: 20px;
+  box-shadow: 0px 0px 3px #888;
+}
+.equipment-area--text{
+  max-width: 150px;
+  margin-top: 50px;
+  font-weight: bold;
+  text-shadow: 1px 1px 0px #262626;
+  color: rgb(255, 102, 0);
+}
+
+/* DASHBOARD */
+/*
+tr{
+  margin-right: 5px;
+}
+th{
+  text-align: center;
+  font-size: 12px;
+}
+td{
+  padding: 15px;
+  
+  font-size: 12px; 
+}*/
