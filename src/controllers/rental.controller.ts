@@ -42,14 +42,14 @@ export const one = async (req: Request, res: Response) => {
  }
 export const add = async (req: Request, res: Response) => {
     
-    let id: string = req.query.id as string;
+    let id: string = req.body.equipment as string;
     let surfboard = await Surfboard.findByPk(id);
    
     if(req.body.name){
     let newRental = await Rental.create({
         name: req.body.name,
         address: req.body.address,
-        equipment_id: req.body.equipment_id,
+        equipment: req.body.equipment,
         date_start: req.body.date_start,
         date_end: req.body.date_end,
         total_price: req.body.total_price,
@@ -60,8 +60,6 @@ export const add = async (req: Request, res: Response) => {
     if(surfboard){
         surfboard.available = false;
         await surfboard.save();
-     }else{
-       res.json({error: 'Item não encontrado!'});
      }
     //res.status(201).json({item: newRental});
    }else{
@@ -82,7 +80,7 @@ export const update = async (req: Request, res: Response) => {
             rent.address = req.body.address;
         }
         if(req.body.equipment_id){
-            rent.equipment_id = req.body.equipment_id;
+            rent.equipment = req.body.equipment_id;
         }
         if(req.body.date_start){
             rent.date_start = req.body.date_start;
@@ -150,7 +148,17 @@ export const newrent = async (req: Request, res: Response) => {
         surfboards
        
     });
-  
-   
+}
+export const updatepage = async (req: Request, res: Response) => {
+    let id: string = req.params.id as string;
+    let rent = await Rental.findByPk(id);
     
+    let surfid = rent?.equipment;
+    let surfboard = await Surfboard.findByPk(surfid);   
+
+    res.render('pages/update',{ 
+        rent,
+        surfboard
+})    
+
 }

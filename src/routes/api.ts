@@ -7,8 +7,9 @@ const router = Router();
 
 router.get('/', RentalController.home);
 router.get('/rentals', RentalController.all);
+router.get('/rental/updatepage/:id', RentalController.updatepage)
 router.get('/rental/:id', RentalController.one);
-router.post('/rental/:equipment_id', RentalController.add);
+router.post('/addnewrent', RentalController.add);
 router.put('/rental/:id', RentalController.update);
 router.delete('/rental/:id', RentalController.remove);
 

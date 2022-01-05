@@ -5,31 +5,36 @@
     <h1>{{title}}</h1>
   {{/banner}}-->
   <div class="rent-area">
-  {{#surfboards}}
-    <form class="form-input" method="POST" action="/addnewrent">
+  {{#rent}}
+    <form class="form-input" >
       <h2 class="form-title">Customer Info:</h2>
       <label class="rent-label" for="customer">Name:</label>
-      <input class="input-area name" id="customer" name="name" type="text" /> <!--value='{{id}}'-->       
+      <input class="input-area name" id="customer" name="name" type="text" value='{{name}}'/> <!---->       
       <label class="rent-label" for="document">Document:</label>
       <input class="document" id="document" name="document" type="file" />
       <label class="rent-label" for="adress">Address:</label>
-      <input class="input-area" id="adress" name="address" type="text" />
+      <input class="input-area" id="adress" name="address" type="text" value='{{address}}' />
       <label class="rent-label" for="equipment">Equipment:</label>
       <input class="input-area" id="equipment" name="equipment" type="text"  value="{{equipment}}" />
       <div class="date-area">  
         <div class="date-input"> 
-          <label class="rent-label" for="date-start">Date Start:</label>
-          <input class="input-area date" id="date-start" name="date_start" type="date" />
+          <label class="rent-label" for="date-start" >Date Start:</label>
+          <input class="input-area date" id="date-start" name="date_start" type="date" value="{{date_start}}"/>
         </div>
         <div class="date-input">
           <label class="rent-label" for="date-end">Date End:</label>
-          <input class="input-area date" id="date-end" name="date_end" type="date" />
+          <input class="input-area date" id="date-end" name="date_end" type="date" value="{{date_end}}"/>
         </div>
       </div>
+      <div class="terminated">
+        <label class="rent-label--terminated" for="finalizado">Terminated:</label>
+        <input class="input-area--terminated" id="finalizado" name="address" type="radio" value='{{finalizado}}' />
+      </div>
       <label class="rent-label" for="info">Info:</label>
-      <textarea class="input-area info" name="info" id="info"></textarea>
+      <textarea class="input-area info" name="info" id="info" value="{{info}}"></textarea>
       <input type="submit" class="btn-submit" value="Confirm"/>
     </form>
+    {{#surfboard}}
     <div class="equipment-area">
       
         <div class="equipment-area--img">
@@ -41,12 +46,13 @@
           <div class="equipment--size">Size: {{size}}</div>
           <div class="equipment--info">Info: {{info}}</div>
         </div>
-      {{/surfboards}}
+      
     </div>
+    {{/surfboard}}
   </div>
   {{#id}}
   <h1>id: {{id}}</h1>
   {{/id}}
 </div>
-
+  {{/rent}}
 {{>partials/footer}}
